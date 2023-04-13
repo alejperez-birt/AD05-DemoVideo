@@ -21,15 +21,21 @@
 			<th>Id</th>
 			<th>FirstName</th>
 			<th>LastName</th>
-			<th>email</th>
+			<th>Email</th>
+			<th></th>
 		</tr>
 		<tr th:each="student: ${students}">
 			<td th:text="${student.id}"></td>
 			<td th:text="${student.firstName}"></td>
 			<td th:text="${student.lastName}"></td>
 			<td th:text="${student.email}"></td>
+			<td class="actions">
+				<a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-primary">Edit</a>
+				<a th:href="@{/students/delete/{id}(id=${student.id})}" class="btn btn-danger">Delete</a>
+			</td>
 		</tr>			
 	</table>
+	<a th:href="@{/students/new}">Add new</a>
 	<div th:replace="fragments/footer ::footer"></div>
 </body>
 </html>
